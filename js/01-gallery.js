@@ -17,12 +17,12 @@ const galleryImages = galleryItems.map(({ preview, original, description }) =>
   </a>
 </li>`).join('');
 
-const gallery = document.querySelector('ul');
+const gallery = document.querySelector('.gallery');
 gallery.insertAdjacentHTML('beforeend', galleryImages);
 
 gallery.addEventListener('click', event => {
   event.preventDefault()
-  if (!event.target.classList.contains("gallery__image")) {
+  if (event.target.nodeName !== 'IMG') {
     return;
   }
   const instance = basicLightbox.create(`
